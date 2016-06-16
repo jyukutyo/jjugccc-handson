@@ -1,5 +1,7 @@
 package demo;
 
+import java.nio.charset.StandardCharsets;
+
 import org.apache.commons.validator.routines.UrlValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,14 +12,16 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.nio.charset.StandardCharsets;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @EnableAutoConfiguration
 @ComponentScan
 @RestController
-//@RefreshScope
+@RefreshScope
 public class UrlShortener {
     public static void main(String[] args) {
         SpringApplication.run(UrlShortener.class, args);

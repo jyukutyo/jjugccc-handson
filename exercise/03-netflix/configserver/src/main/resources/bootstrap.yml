@@ -1,1 +1,0 @@
-spring.cloud.config.server.uri: http://localhost:8080/git/root/config-repo.git

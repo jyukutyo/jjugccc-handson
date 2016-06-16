@@ -1,5 +1,9 @@
 package demo;
 
+import static java.util.Collections.singletonMap;
+
+import java.io.IOException;
+
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
@@ -12,6 +16,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpEntity;
@@ -29,10 +34,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.io.IOException;
-
-import static java.util.Collections.singletonMap;
 
 @EnableAutoConfiguration
 @ComponentScan
@@ -72,6 +73,11 @@ public class App {
     String redirect(@PathVariable String hash) {
         String url = remoteCommand.getUrl(hash);
         return "redirect:" + url;
+    }
+
+    @Bean
+    RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }
 

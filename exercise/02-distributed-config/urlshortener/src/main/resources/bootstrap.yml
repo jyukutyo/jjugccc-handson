@@ -1,3 +1,9 @@
 spring:
   application:
     name: urlshortener
+endpoints:
+  shutdown:
+    enabled: true
+  restart:
+    enabled: true
+
