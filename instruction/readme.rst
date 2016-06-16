@@ -4,11 +4,6 @@ JJUG CCC Fall 2014 [R5-3] Spring Bootハンズオン～Spring Bootで作るマ�
   :depth: 2
 
 
-事前準備
-================================================================================
-ハンズオン資材は\ http://bit.ly/1uYCKF0\ からダウンロードしてください。
-
-
 必要なソフトウェアのインストール
 --------------------------------------------------------------------------------
 
@@ -16,7 +11,7 @@ Mac/Windowsユーザー向けに記述しています。Linuxで実施する場�
 
 Java SE 8
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html\ からJava SE Development Kit 8u25 (8以上であればおそらくOK)をダウンロードして、
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html\ からJava SE Development Kit 8uXX (8以上であればおそらくOK)をダウンロードして、
 インストールしてください。
 
 環境変数\ ``JAVA_HOME``\ の設定と\ ``PATH``\ の追加を必ず行ってください。
@@ -25,8 +20,6 @@ Maven
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 http://ftp.meisei-u.ac.jp/mirror/apache/dist/maven/maven-3/3.2.3/binaries/apache-maven-3.2.3-bin.tar.gz\ からMavenをダウンロードして、
 展開したディレクトリのbinフォルダを環境変数\ ``PATH``\ に追加してください。
-
-尚、(ハンズオン資材のルートフォルダ)/software/apache-maven-3.2.3-bin.tar.gzにダウンロード済みです。
 
 Git Bash (Windowsの場合)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -43,55 +36,17 @@ jq (オプション)
 Redis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Macの場合は、以下を実行してください。(要:XCode)
-
-.. code-block:: bash
-
-    $ cd (ハンズオン資材のルートフォルダ)/software/redis-2.8.17
-    $ tar xzvf redis-2.8.17.tar.gz
-    $ cd redis-2.8.17
-    $ make
-
-Windows 64ビットの場合は、(ハンズオン資材のルートフォルダ)/software/redis-2.8.17/redis-2.8.17.zipを展開してください。
-
-Windows 32ビットの場合は、(ハンズオン資材のルートフォルダ)/software/redis-2.8.17/edisbin.zipを展開してください。
-
-
-
 Gitbucket
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-https://github.com/takezoe/gitbucket/releases/download/2.5/gitbucket.war\ より、Gitbucketをダウンロードしてください。
-
-尚、(ハンズオン資材のルートフォルダ)/software/gitbucket.warにダウンロード済みです。
+https://github.com/takezoe/gitbucket/releases/\ より、Gitbucketをダウンロードしてください。
 
 IntelliJ IDEA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-https://www.jetbrains.com/idea/download/\ より、IntelliJ IDEA 14のCommunity EditionまたはUltimate Editionをダウンロードしてインストールしてください。
+https://www.jetbrains.com/idea/download/\ より、IntelliJ IDEAのCommunity EditionまたはUltimate Editionをダウンロードしてインストールしてください。
 
 Spring Tool SuiteやEclipseを使用してもハンズオンを実施できますが、ハンズオンの説明はIntelliJ IDEAを用いて行います。
 
-
-Mavenリポジトリのコピー
---------------------------------------------------------------------------------
-ハンズオンはオフライン環境で行います。
-
-必要なライブラリをインターネットからダウンロードせず直接Mavenリポジトリにコピーします。
-
-(ハンズオン資材のルートフォルダ)/repository以下を(ホームディレクトリ)/.m2/repository以下にコピーしてください。
-
-.. code-block:: bash
-
-    $ cp -rf (ハンズオン資材のルートフォルダ)/repository/* ~/.m2/repository/
-
-\ ``overwrite /Users/maki/.m2/repository/antlr/antlr/2.7.2/_maven.repositories? (y/n [n])``\ というように上書きするかどうか聞かれる場合は
-
-
-.. code-block:: bash
-
-    $ \cp -rf (ハンズオン資材のルートフォルダ)/repository/* ~/.m2/repository/
-
-を実行してください。
 
 演習の全体像
 ================================================================================
@@ -152,7 +107,7 @@ IntelliJ IDEAを開いて「New Project」で新規プロジェクトを作成�
    * - | Project name
      - | jjugccc-handson
    * - | Project location
-     - | (ハンズオン資材のルートフォルダ)/exercise
+     - | exercise
 
 
 .. figure:: ./images/import-exercise01-02.png
@@ -188,7 +143,7 @@ JDKが未設定の場合は、「New」を押してJDKを設定してくださ�
 .. figure:: ./images/import-exercise01-05.png
    :width: 80%
 
-「(ハンズオン資材のルートフォルダ)/exercise/01-urlshortener」を選択してください。
+「exercise/01-urlshortener」を選択してください。
 
 .. figure:: ./images/import-exercise01-06.png
    :width: 80%
@@ -241,7 +196,7 @@ JDKが未設定の場合は、「New」を押してJDKを設定してくださ�
 
 .. code-block:: bash
 
-    $ cd (ハンズオン資材のルートフォルダ)/exercise/01-urlshortener
+    $ cd exercise/01-urlshortener
     $ mvn spring-boot:run -f urlshortener/pom.xml
 
 以下の結果が返るか確認してください。
@@ -283,7 +238,7 @@ Macの場合
 
 .. code-block:: bash
 
-    $ cd (ハンズオン資材のルートフォルダ)/software/redis-2.8.17
+    $ cd software/redis-2.8.17
     $ ./src/redis-server
     [34286] 09 Nov 05:27:07.455 # Warning: no config file specified, using the default config. In order to specify a config file use ./src/redis-server /path/to/redis.conf
     [34286] 09 Nov 05:27:07.457 * Increased maximum number of open files to 10032 (it was originally set to 2560).
@@ -364,7 +319,7 @@ Config ServerはデフォルトでGithubに接続しますが、今回はオフ�
 演習プロジェクトのインポート
 --------------------------------------------------------------------------------
 「File」->「Import Module」で演習プロジェクトをインポートします。
-「(ハンズオン資材のルートフォルダ)/exercise/02-distributed-config」を選択してください。
+「exercise/02-distributed-config」を選択してください。
 
 .. figure:: ./images/import-exercise02-01.png
    :width: 80%
@@ -384,7 +339,7 @@ Gibucketを起動しましょう。8080番ポートを使用するので、こ�
 
 .. code-block:: bash
 
-    $ cd (ハンズオン資材のルートフォルダ)/software
+    $ cd software
     $ java -jar gitbucket.war
 
 http://localhost:8080\ にアクセスしユーザー名/パスワードともに「root」でログインしてください。
@@ -446,7 +401,7 @@ Config Server起動
 
 .. code-block:: bash
 
-    $ cd (ハンズオン資材のルートフォルダ)/exercise/02-distributed-config
+    $ cd exercise/02-distributed-config
     $ mvn spring-boot:run -f configserver/pom.xml
 
 動作確認しましょう。
@@ -634,7 +589,7 @@ Git上の変更が即反映されています。
 
 .. code-block:: bash
 
-    $ cd (ハンズオン資材のルートフォルダ)/exercise/02-distributed-config
+    $ cd exercise/02-distributed-config
     $ mvn spring-boot:run -f urlshortener/pom.xml -Drun.arguments="--server.port=8081"
 
 
@@ -754,7 +709,7 @@ Config Server、Config ClientともにCtrl+Cで終了してください。(Gitbu
 演習プロジェクトのインポート
 --------------------------------------------------------------------------------
 「File」->「Import Module」で演習プロジェクトをインポートします。
-「(ハンズオン資材のルートフォルダ)/exercise/03-netflix」を選択してください。
+「exercise/03-netflix」を選択してください。
 
 .. figure:: ./images/import-exercise03-01.png
    :width: 80%
@@ -784,7 +739,7 @@ Config Serverの起動
 
 .. code-block:: bash
 
-    $ cd (ハンズオン資材のルートフォルダ)/exercise/03-netflix
+    $ cd exercise/03-netflix
     $ mvn spring-boot:run -f configserver/pom.xml
 
 
@@ -798,7 +753,7 @@ Service Discovery (Eureka Server)の起動
 
 .. code-block:: bash
 
-    $ cd (ハンズオン資材のルートフォルダ)/exercise/03-netflix
+    $ cd exercise/03-netflix
     $ mvn spring-boot:run -f eureka-server/pom.xml
 
 http://localhost:8761/\ でEureka Serverのダッシュボードにアクセスできます。
@@ -819,7 +774,7 @@ Circuit Breaker Monitor (Hystrix Dashboard)の起動
 
 .. code-block:: bash
 
-    $ cd (ハンズオン資材のルートフォルダ)/exercise/03-netflix
+    $ cd exercise/03-netflix
     $ mvn spring-boot:run -f hystrix-dashboard/pom.xml
 
 起動後、30秒経ったら\ `Eureka Serverのダッシュボード <http://localhost:8761>`_\ にアクセスしてください。
@@ -898,7 +853,7 @@ application.ymlにEurekaに関する情報を追加しています。
 
 .. code-block:: bash
 
-    $ cd (ハンズオン資材のルートフォルダ)/exercise/03-netflix
+    $ cd exercise/03-netflix
     $ mvn spring-boot:run -f urlshortener/pom.xml \
      -Drun.arguments="--server.port=8081,--eureka.instance.hostname=urlshortener1"
 
@@ -997,7 +952,7 @@ UIからサービスを呼び出すとモニタリング画面に反映されま
 
 .. code-block:: bash
 
-    $ cd (ハンズオン資材のルートフォルダ)/exercise/03-netflix
+    $ cd exercise/03-netflix
     $ mvn spring-boot:run -f urlshortener/pom.xml \
      -Drun.arguments="--server.port=8082,--eureka.instance.hostname=urlshortener2"
 
@@ -1005,7 +960,7 @@ UIからサービスを呼び出すとモニタリング画面に反映されま
 
 .. code-block:: bash
 
-    $ cd (ハンズオン資材のルートフォルダ)/exercise/03-netflix
+    $ cd exercise/03-netflix
     $ mvn spring-boot:run -f urlshortener/pom.xml \
      -Drun.arguments="--server.port=8083,--eureka.instance.hostname=urlshortener3"
 
